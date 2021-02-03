@@ -43,16 +43,16 @@ public class Client {
 //        3.抽象工厂设计，关注一类产品族
         //是工厂方法的拓展，工厂方法关心单一产品，抽象工厂关系一类产品族
         //工厂方法的核心是工厂，所有的对象创造逻辑都在工厂
-        XiaoChiFactory xiaoChiFactory = new XiaoChiFactory();
-        xiaoChiFactory.vegetable().desc();
-        xiaoChiFactory.stapleFood().desc();
-        xiaoChiFactory.soup().desc();
-
-        System.out.println("===============================================================");
-
-        StarFactory starFactory = new StarFactory();
-        starFactory.vegetable().desc();
-        starFactory.stapleFood().desc();
-        starFactory.soup().desc();
+//        XiaoChiFactory xiaoChiFactory = new XiaoChiFactory();
+//        xiaoChiFactory.vegetable().desc();
+//        xiaoChiFactory.stapleFood().desc();
+//        xiaoChiFactory.soup().desc();
+//
+//        System.out.println("===============================================================");
+//
+//        StarFactory starFactory = new StarFactory();
+//        starFactory.vegetable().desc();
+//        starFactory.stapleFood().desc();
+//        starFactory.soup().desc();
     }
 }
