@@ -5,9 +5,9 @@ package decorator;
  * @Description: 铃声装饰
  * @date 2021/2/410:23 上午
  */
-public class MusicPhone extends PhoneDecorator {
+public class MessageDecorator extends PhoneDecorator {
 
-    public MusicPhone(Phone phone) {
+    public MessageDecorator(Phone phone) {
         super(phone);
     }
 

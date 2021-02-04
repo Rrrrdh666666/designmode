@@ -5,9 +5,9 @@ package decorator;
  * @Description: 短信手机
  * @date 2021/2/411:03 上午
  */
-public class MessagePhone extends PhoneDecorator {
+public class MusicDecorator extends PhoneDecorator {
 
-    public MessagePhone(Phone phone) {
+    public MusicDecorator(Phone phone) {
         super(phone);
     }
 

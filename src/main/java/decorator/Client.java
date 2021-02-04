@@ -14,9 +14,9 @@ public class Client {
     public static void main(String[] args) {
         Phone phone = new XiaoMiPhone();
         phone.call();
-//        phone = new MusicPhone(phone);
-//        phone.call();
-        phone = new MessagePhone(phone);
+        phone = new MusicDecorator(phone);
+        phone.call();
+        phone = new MessageDecorator(phone);
         phone.call();
 
     }
