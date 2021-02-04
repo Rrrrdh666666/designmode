@@ -1,8 +1,6 @@
 package strategy;
 
-import org.springframework.boot.logging.log4j2.SpringBootConfigurationFactory;
-import org.springframework.util.comparator.Comparators;
-import org.springframework.web.servlet.view.tiles3.SimpleSpringPreparerFactory;
+
 import strategy.tank.Fire;
 import strategy.tank.OneFire;
 import strategy.tank.Tank;
