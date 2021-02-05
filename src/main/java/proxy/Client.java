@@ -56,7 +56,5 @@ public class Client {
         });
         Core core = (Core) enhancer.create();
         core.core();
-        System.out.println("测试");
-
     }
 }
