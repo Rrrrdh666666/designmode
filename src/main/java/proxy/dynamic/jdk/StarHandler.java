@@ -2,6 +2,7 @@ package proxy.dynamic.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * @author ryh
@@ -12,7 +13,7 @@ public class StarHandler implements InvocationHandler {
 
     private Object star;
 
-    public StarHandler(StarMan star){
+    public StarHandler(Object star){
         this.star = star;
     }
 
@@ -25,8 +26,12 @@ public class StarHandler implements InvocationHandler {
         }
         if(method.getName().equals("dance")){
             System.out.println("免费跳舞");
-
+            method.invoke(star,args);
         }
         return proxy;
+    }
+
+    public Object creatProxy(){
+        return Proxy.newProxyInstance(star.getClass().getClassLoader(),star.getClass().getInterfaces(),this);
     }
 }
