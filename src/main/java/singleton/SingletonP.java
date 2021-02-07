@@ -20,7 +20,7 @@ public class SingletonP {
     private static class SingletonPInstance{
         private final  static SingletonP INSTANCE = new SingletonP();
 
-        public void test(){};
+//        public void test(){};
     }
 
     public static SingletonP getInstance(){
