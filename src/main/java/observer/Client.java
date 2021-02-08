@@ -21,7 +21,7 @@ public class Client {
 
     public static void main(String[] args) {
         //被观察者
-        WeatherData weatherData = WeatherData.getInstance();
+        WeatherData weatherData = new WeatherData();
         //绑定观察者
         DisplayCard displayCard = new DisplayCard(weatherData);
         DisplayWeb displayWeb = new DisplayWeb(weatherData);
@@ -35,6 +35,7 @@ public class Client {
         weatherData.renewDate("北京","阴天","-7");
         displayCard.display();
         displayWeb.display();
+
 
     }
 

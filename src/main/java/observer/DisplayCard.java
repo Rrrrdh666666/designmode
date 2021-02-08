@@ -20,7 +20,6 @@ public class DisplayCard implements Observer {
 
     @Override
     public void update() {
-        System.out.println("定制化解耦");
         this.city = weatherData.getCity();
         this.weather = weatherData.getWeather();
         this.temperature = weatherData.getTemperature();
