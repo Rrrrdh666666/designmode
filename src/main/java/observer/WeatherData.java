@@ -1,7 +1,6 @@
 package observer;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author ryh
@@ -14,8 +13,15 @@ public class WeatherData extends Subject{
     private String weather;
     private String temperature;
     //维护一个单例集合
-    private static List<Observer> OBSERVERS = new LinkedList<Observer>();
+    private static CopyOnWriteArrayList<Observer> OBSERVERS = new CopyOnWriteArrayList<>();
 
+    //单例存在
+    private static WeatherData INSTANCE = new WeatherData();
+    private WeatherData(){};
+
+    public static WeatherData getInstance(){
+        return INSTANCE;
+    }
     @Override
     public boolean registerObserver(Observer observer) {
         return OBSERVERS.add(observer);

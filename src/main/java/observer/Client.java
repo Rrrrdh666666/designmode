@@ -21,7 +21,7 @@ public class Client {
 
     public static void main(String[] args) {
         //被观察者
-        WeatherData weatherData = new WeatherData();
+        WeatherData weatherData = WeatherData.getInstance();
         //绑定观察者
         DisplayCard displayCard = new DisplayCard(weatherData);
         DisplayWeb displayWeb = new DisplayWeb(weatherData);
