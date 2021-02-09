@@ -58,5 +58,4 @@ public class WeatherData extends Subject{
         return temperature;
     }
 
-
 }
