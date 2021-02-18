@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SubPubCentral {
 
     //订阅中心配置
-    private static ConcurrentHashMap<String, Set<String>> subPubCentral = new  ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, Set<String>> CENTRAL = new  ConcurrentHashMap<>();
 
     private static SubPubCentral INSTANCE = new SubPubCentral();
 
@@ -24,10 +24,10 @@ public class SubPubCentral {
             return false;
         }
         //注册
-        boolean containsKey = subPubCentral.containsKey(publish.getType());
+        boolean containsKey = CENTRAL.containsKey(publish.getType());
         if(!containsKey){
             HashSet<String> subscribers = new HashSet<>();
-            subPubCentral.put(publish.getType(),subscribers);
+            CENTRAL.put(publish.getType(),subscribers);
         }
         return true;
     }
@@ -39,11 +39,11 @@ public class SubPubCentral {
             return false;
         }
         //关联订阅
-        boolean containsKey = subPubCentral.containsKey(publish.getType());
+        boolean containsKey = CENTRAL.containsKey(publish.getType());
         if(containsKey){
-            Set<String> subscribers = subPubCentral.get(publish.getType());
+            Set<String> subscribers = CENTRAL.get(publish.getType());
             subscribers.add(subscriber.getType());
-            subPubCentral.put(publish.getType(),subscribers);
+            CENTRAL.put(publish.getType(),subscribers);
             return true;
         }
         return false;
@@ -54,9 +54,9 @@ public class SubPubCentral {
         if(null == publish || null == publish.getType() || null == message ){
            return false;
         }
-        boolean containsKey = subPubCentral.containsKey(publish.getType());
+        boolean containsKey = CENTRAL.containsKey(publish.getType());
         if(containsKey){
-            Set<String> subscribers = subPubCentral.get(publish.getType());
+            Set<String> subscribers = CENTRAL.get(publish.getType());
             if(null == subscribers ||0 == subscribers.size()){
                 return true;
             }
