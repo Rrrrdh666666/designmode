@@ -11,13 +11,15 @@ public class MessageDecorator extends PhoneDecorator {
         super(phone);
     }
 
-    private void ring(){
-        System.out.println("铃声响叮叮叮叮叮");
 
+
+    private void message(){
+        System.out.println("手机发送短信");
     }
+
     @Override
     public void call(){
-        ring();
+        message();
         super.call();
     }
 
