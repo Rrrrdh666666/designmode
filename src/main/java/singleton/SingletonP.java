@@ -6,6 +6,9 @@ package singleton;
  * @date 2021/1/259:09 下午
  */
 
+import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * 利用静态内部类的懒加载，只有在第一次使用时才会加载。
  *
@@ -13,9 +16,14 @@ package singleton;
  *
  *
  */
-public class SingletonP {
+public class SingletonP implements Serializable {
 
-    private SingletonP(){};
+    //反射破坏
+    private SingletonP(){
+        if(null != SingletonPInstance.INSTANCE){
+            throw new RuntimeException("该实例已经存在");
+        }
+    };
 
     private static class SingletonPInstance{
         private final  static SingletonP INSTANCE = new SingletonP();
@@ -28,5 +36,49 @@ public class SingletonP {
 //        new SingletonPInstance().test();
 
         return SingletonPInstance.INSTANCE;
+    }
+
+    //序列化破坏
+    private Object readResolve(){
+        return SingletonPInstance.INSTANCE;
+    }
+
+    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        //反射破坏
+//        Class<?> singletonPClass = SingletonP.class;
+//        Constructor c = singletonPClass.getDeclaredConstructor(null);
+//        c.setAccessible(true);
+//        Object o = c.newInstance();
+//        Object o1 = c.newInstance();
+//        System.out.println(o == o1);
+
+        //序列化破坏
+        SingletonP s1 = null;
+        SingletonP s2 = SingletonP.getInstance();
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream("singletonP.obj");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(s2);
+            oos.flush();
+            oos.close();
+
+            FileInputStream fis = new FileInputStream("singletonP.obj");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            s1 = (SingletonP)ois.readObject();
+            ois.close();
+
+            System.out.println(s1);
+            System.out.println(s2);
+
+            System.out.println(s1 == s2);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

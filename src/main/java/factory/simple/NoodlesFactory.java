@@ -16,7 +16,7 @@ package factory.simple;
  * 缺点：每新增加一个具体实现，工厂类都需要修改，不符合开闭原则
  */
 public class NoodlesFactory{
-
+      //初稿
     public final static int LAMIAM  = 1;
     public final static int FANGBIANMIAN  = 2;
 
@@ -27,6 +27,20 @@ public class NoodlesFactory{
            case 2:
                return new FangBianMian();
        }
+        return null;
+    }
+
+    //优化
+    //仍有缺点，对初始化较为复杂的对象不适用
+    public static Noodles create(Class<? extends Noodles> noodles){
+
+        try {
+            if(null != noodles){
+                return noodles.newInstance();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }
